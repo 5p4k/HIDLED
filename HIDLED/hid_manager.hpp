@@ -193,7 +193,6 @@ namespace spak {
         hid_device_opener(IOHIDDeviceRef device) : _device(device), _open_res(kIOReturnSuccess) {
             _open_res = IOHIDDeviceOpen(device, kIOHIDOptionsTypeNone);
             if (_open_res != kIOReturnSuccess) {
-                std::cerr << "Cannot open device: " << describe_io_return(_open_res) << std::endl;
                 _device = nullptr;
             }
         }
@@ -402,6 +401,10 @@ namespace spak {
         
         hid_device_const_elements_enumerator elements(uint32_t in_page = kHIDPage_Undefined, uint32_t in_usage_page = 0) const {
             return {_device, in_page, in_usage_page};
+        }
+        
+        hid_device_opener open() {
+            return hid_device_opener(_device);
         }
     };
     
