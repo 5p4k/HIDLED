@@ -28,7 +28,7 @@
 		F67FBEEB209F250F002874BE /* HIDLED */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HIDLED; sourceTree = BUILT_PRODUCTS_DIR; };
 		F67FBEEE209F250F002874BE /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		F67FBEF6209F251B002874BE /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
-		F67FBEFB209F330F002874BE /* hid_manager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = hid_manager.hpp; sourceTree = "<group>"; };
+		F67FBEFB209F330F002874BE /* hid.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = hid.hpp; sourceTree = "<group>"; };
 		F67FBEFC209F4B4A002874BE /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -66,7 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				F67FBEEE209F250F002874BE /* main.cpp */,
-				F67FBEFB209F330F002874BE /* hid_manager.hpp */,
+				F67FBEFB209F330F002874BE /* hid.hpp */,
 			);
 			path = HIDLED;
 			sourceTree = "<group>";

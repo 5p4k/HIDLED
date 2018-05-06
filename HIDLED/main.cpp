@@ -7,7 +7,7 @@
 //
 
 #include <iostream>
-#include "hid_manager.hpp"
+#include "hid.hpp"
 
 int main(int argc, const char * argv[]) {
     for (auto device : spak::hid_device_enumerator(kHIDPage_GenericDesktop, kHIDUsage_GD_Keyboard)) {
@@ -24,11 +24,11 @@ int main(int argc, const char * argv[]) {
             }
             std::cout << std::endl;
         }
-        if (device.manufacturer().find("Apple") == std::string::npos and opener.is_open()) {
+        if (device.manufacturer().find("Apple") != std::string::npos and opener.is_open()) {
             auto elements = device.elements(kHIDPage_LEDs);
             if (elements.size() >= 2) {
-                std::cout << "Setting LED 2 of non-Apple keyboard to 1." << std::endl;
-                elements[2].value<CFIndex>() = 1;
+                std::cout << "Setting LED 1 of Apple keyboard to 1." << std::endl;
+                elements[1].value<CFIndex>() = 1;
             }
         }
     }
