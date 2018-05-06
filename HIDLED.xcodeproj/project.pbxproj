@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F67FBEEF209F250F002874BE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F67FBEEE209F250F002874BE /* main.cpp */; };
 		F67FBEF7209F251B002874BE /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F67FBEF6209F251B002874BE /* IOKit.framework */; };
+		F67FBEFD209F4B4A002874BE /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F67FBEFC209F4B4A002874BE /* CoreFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +29,7 @@
 		F67FBEEE209F250F002874BE /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		F67FBEF6209F251B002874BE /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
 		F67FBEFB209F330F002874BE /* hid_manager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = hid_manager.hpp; sourceTree = "<group>"; };
+		F67FBEFC209F4B4A002874BE /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F67FBEFD209F4B4A002874BE /* CoreFoundation.framework in Frameworks */,
 				F67FBEF7209F251B002874BE /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,6 +74,7 @@
 		F67FBEF5209F251B002874BE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F67FBEFC209F4B4A002874BE /* CoreFoundation.framework */,
 				F67FBEF6209F251B002874BE /* IOKit.framework */,
 			);
 			name = Frameworks;
