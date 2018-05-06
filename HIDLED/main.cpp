@@ -7,6 +7,7 @@
 //
 
 #include <iostream>
+#include "hid_manager.hpp"
 
 int main(int argc, const char * argv[]) {
     // insert code here...
