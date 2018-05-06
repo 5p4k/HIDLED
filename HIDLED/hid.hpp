@@ -183,12 +183,8 @@ namespace spak {
     class hid_device_opener {
         IOHIDDeviceRef _device;
         IOReturn _open_res;
-        void close() {
-            if (_device != nullptr) {
-                IOHIDDeviceClose(_device, kIOHIDOptionsTypeNone);
-                _device = nullptr;
-            }
-        }
+        
+        hid_device_opener() : _device(nullptr), _open_res(kIOReturnSuccess) {}
     public:
         hid_device_opener(IOHIDDeviceRef device) : _device(device), _open_res(kIOReturnSuccess) {
             _open_res = IOHIDDeviceOpen(device, kIOHIDOptionsTypeNone);
@@ -196,11 +192,22 @@ namespace spak {
                 _device = nullptr;
             }
         }
+        hid_device_opener(hid_device_opener const &) = delete;
+        hid_device_opener &operator=(hid_device_opener const &) = delete;
+        hid_device_opener(hid_device_opener &&rval) = default;
+        hid_device_opener &operator=(hid_device_opener &&rval) = default;
+        
         IOReturn result() const {
             return _open_res;
         }
         bool is_open() const {
             return _device != nullptr;
+        }
+        void close() {
+            if (_device != nullptr) {
+                IOHIDDeviceClose(_device, kIOHIDOptionsTypeNone);
+                _device = nullptr;
+            }
         }
         ~hid_device_opener() {
             close();
@@ -445,9 +452,9 @@ namespace spak {
     public:
         
         using value_type = std::vector<hid_device>::value_type;
-        using reference = std::vector<hid_device>::const_reference;
+        using reference = std::vector<hid_device>::reference;
         using const_reference = std::vector<hid_device>::const_reference;
-        using pointer = std::vector<hid_device>::const_pointer;
+        using pointer = std::vector<hid_device>::pointer;
         using const_pointer = std::vector<hid_device>::const_pointer;
         
         hid_device_enumerator(uint32_t in_page = kHIDPage_Undefined, uint32_t in_usage_page = 0) :
@@ -462,11 +469,31 @@ namespace spak {
             return _devices;
         }
         
+        auto size() const {
+            return _devices.size();
+        }
+        
+        const_reference operator[](std::size_t i) const {
+            return _devices[i];
+        }
+        
+        reference operator[](std::size_t i) {
+            return _devices[i];
+        }
+        
         auto begin() const {
             return _devices.begin();
         }
         
         auto end() const {
+            return _devices.end();
+        }
+        
+        auto begin() {
+            return _devices.begin();
+        }
+        
+        auto end() {
             return _devices.end();
         }
     };
