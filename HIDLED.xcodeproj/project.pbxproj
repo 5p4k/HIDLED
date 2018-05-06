@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F67FBEEF209F250F002874BE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F67FBEEE209F250F002874BE /* main.cpp */; };
+		F67FBEF7209F251B002874BE /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F67FBEF6209F251B002874BE /* IOKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +26,8 @@
 /* Begin PBXFileReference section */
 		F67FBEEB209F250F002874BE /* HIDLED */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HIDLED; sourceTree = BUILT_PRODUCTS_DIR; };
 		F67FBEEE209F250F002874BE /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		F67FBEF6209F251B002874BE /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		F67FBEFB209F330F002874BE /* hid_manager.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = hid_manager.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F67FBEF7209F251B002874BE /* IOKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -43,6 +47,7 @@
 			children = (
 				F67FBEED209F250F002874BE /* HIDLED */,
 				F67FBEEC209F250F002874BE /* Products */,
+				F67FBEF5209F251B002874BE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,8 +63,17 @@
 			isa = PBXGroup;
 			children = (
 				F67FBEEE209F250F002874BE /* main.cpp */,
+				F67FBEFB209F330F002874BE /* hid_manager.hpp */,
 			);
 			path = HIDLED;
+			sourceTree = "<group>";
+		};
+		F67FBEF5209F251B002874BE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F67FBEF6209F251B002874BE /* IOKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
