@@ -350,6 +350,13 @@ namespace spak {
             return _elements.end();
         }
         
+        auto size() const {
+            return _elements.size();
+        }
+        
+        const_reference operator[](std::size_t i) const {
+            return _elements[i];
+        }
     };
     
     
@@ -370,6 +377,10 @@ namespace spak {
         
         auto end() {
             return _elements.end();
+        }
+        
+        reference operator[](std::size_t i) {
+            return _elements[i];
         }
     };
     

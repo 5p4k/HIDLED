@@ -24,6 +24,13 @@ int main(int argc, const char * argv[]) {
             }
             std::cout << std::endl;
         }
+        if (device.manufacturer().find("Apple") == std::string::npos and opener.is_open()) {
+            auto elements = device.elements(kHIDPage_LEDs);
+            if (elements.size() >= 2) {
+                std::cout << "Setting LED 2 of non-Apple keyboard to 1." << std::endl;
+                elements[2].value<CFIndex>() = 1;
+            }
+        }
     }
     return 0;
 }
