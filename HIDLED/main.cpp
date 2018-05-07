@@ -10,8 +10,8 @@
 #include <sstream>
 #include "hid.hpp"
 
-void list() {
-    for (auto &device : spak::hid_device_enumerator(kHIDPage_GenericDesktop, kHIDUsage_GD_Keyboard)) {
+void list(spak::hid_device_enumerator &enumerator) {
+    for (auto &device : enumerator) {
         std::string const manu = device.manufacturer();
         std::string const prod = device.product();
         std::cout << "Device ";
@@ -55,8 +55,8 @@ void list() {
     }
 }
 
-std::unique_ptr<spak::hid_device> match_keyboard(std::string const &match_prod = "", std::string const &match_manu = "") {
-    for (auto device : spak::hid_device_enumerator(kHIDPage_GenericDesktop, kHIDUsage_GD_Keyboard)) {
+std::unique_ptr<spak::hid_device> match_keyboard(spak::hid_device_enumerator &enumerator, std::string const &match_prod = "", std::string const &match_manu = "") {
+    for (auto device : enumerator) {
         std::string const manu = device.manufacturer();
         std::string const prod = device.product();
         if (not match_manu.empty() and manu != match_manu) {
@@ -124,6 +124,7 @@ struct cmdline {
                     action = actions::wrong_cmd_line;
                     continue;
                 }
+                action = actions::set;
                 std::stringstream ss_idx(argv[++argn]);
                 ss_idx >> element;
                 if (argn >= argc - 1) {
@@ -139,6 +140,7 @@ struct cmdline {
                     action = actions::wrong_cmd_line;
                     continue;
                 }
+                action = actions::toggle;
                 std::stringstream ss_idx(argv[++argn]);
                 ss_idx >> element;
             } else {
@@ -163,6 +165,7 @@ namespace return_code {
 
 int main(int argc, const char * argv[]) {
     try {
+        spak::hid_device_enumerator enumerator(kHIDPage_GenericDesktop, kHIDUsage_GD_Keyboard);
         cmdline cmd;
         cmd.parse(argc, argv);
         switch (cmd.action) {
@@ -173,12 +176,12 @@ int main(int argc, const char * argv[]) {
                 help();
                 return return_code::ok;
             case cmdline::actions::list:
-                list();
+                list(enumerator);
                 return return_code::ok;
             case cmdline::actions::set:
                 [[fallthrough]];
             case cmdline::actions::toggle: {
-                auto p_device = match_keyboard(cmd.match_product, cmd.match_manufacturer);
+                auto p_device = match_keyboard(enumerator, cmd.match_product, cmd.match_manufacturer);
                 if (p_device == nullptr) {
                     std::cerr << "Unable to find a keyboard matching";
                     if (not cmd.match_product.empty()) {
